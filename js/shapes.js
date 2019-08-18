@@ -5,6 +5,8 @@ class Heart
         this.x = x;
         this.y = y;
         this.size = Math.max(0.01, size);
+        this.startSize = this.size;
+        this.t = 0;
         this.color = color;
     }
 
@@ -21,6 +23,13 @@ class Heart
         ctx.bezierCurveTo(x+55/s,y+22.5/s,x+55/s,y-15/s,x+25/s,y-15/s);
         ctx.bezierCurveTo(x+10/s,y-15/s,x,y-3/s,x,y);
         ctx.fill();
+    }
+
+    beat()
+    {
+        this.t = (this.t + 0.1) % Math.PI;
+        this.size = this.startSize +  Math.sin(this.t);
+        this.draw();
     }
 }
 

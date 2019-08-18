@@ -12,7 +12,9 @@ new Rect(20,20,50,50,"#dd9879").draw();
 new DRect(60,80,50,70, "#7be9ff", 5).draw();
 
 
-function loop()
+new Circle(200,200,15,"#75ddb0").draw();
+
+/*function loop()
 {
     new Rect(0,0,600,400,"#fff").draw();
     h1.beat();
@@ -20,4 +22,4 @@ function loop()
     h3.beat();
 }
 
-window.setInterval(loop, 30);
+window.setInterval(loop, 30);*/

@@ -1,9 +1,23 @@
-class Heart
+class Shape
 {
-    constructor(x, y, color, size = 1)
+    constructor(x, y)
     {
         this.x = x;
         this.y = y;
+    }
+
+    setPosition(x,y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Heart extends Shape
+{
+    constructor(x, y, color, size = 1)
+    {
+        super(x, y);
         this.size = Math.max(0.01, size);
         this.startSize = this.size;
         this.t = 0;
@@ -34,12 +48,11 @@ class Heart
 }
 
 
-class Rect
+class Rect extends Shape
 {
     constructor(x, y, w, h, color)
     {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.w = w;
         this.h = h;
         this.color = color;
@@ -62,8 +75,8 @@ class DRect extends Rect
 
     draw()
     {
-        let ltx = this.x + this.emp, lty = this.y, rtx = this.x+this.w, rty = lty,
-            lbx = this.x, lby = lty+this.h, rbx = lbx + this.w - this.emp, rby = lby;
+        let ltx = this.x + this.emp, lty = this.y, rtx = ltx+this.w, rty = lty,
+            lbx = this.x, lby = lty+this.h, rbx = lbx + this.w, rby = lby;
         ctx.fillStyle = this.color;
         ctx.beginPath();
         moveTo(ltx,lty);
@@ -75,12 +88,11 @@ class DRect extends Rect
     }
 }
 
-class Circle
+class Circle extends Shape
 {
     constructor(x, y, r, color)
     {
-        this.x = x;
-        this.y = y;
+        super(x, y);
         this.r = r;
         this.color = color;
     }

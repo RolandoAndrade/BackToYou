@@ -7,12 +7,7 @@ let h2 = new Heart(350,300,"#ff3665",4);
 
 let h3 = new Heart(400,300,"#ff234a",4);
 
-new Rect(20,20,50,50,"#dd9879").draw();
-
-new DRect(60,80,50,70, "#7be9ff", 5).draw();
-
-
-new Circle(200,200,15,"#75ddb0").draw();
+new Player(50,50).draw();
 
 /*function loop()
 {

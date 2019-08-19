@@ -1,33 +1,20 @@
 let canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d");
 
 
-let h1 = new Heart(300,300,"#ff78c3",4);
+let h1 = new Heart(100,200,"#ff78c3",4);
 
-let h2 = new Heart(350,300,"#ff3665",4);
+let h2 = new Heart(200,200,"#ff3665",4);
 
 let h3 = new Heart(400,300,"#ff234a",4);
 
-let p = new Player(50,250);
+let p = new Player(150,200);
 
-let pl = new Platform(50,300,100,20);
+let t = 0;
 
 function loop()
 {
-    new Rect(0,0,600,400,"#fff").draw();
-    /*h1.beat();
-    h2.beat();
-    h3.beat();*/
-    p.move();
+    new Rect(0,0,700,400,"#333").draw();
     p.draw();
-    pl.draw();
-    if(pl.collision(p))
-    {
-        p.ground(pl);
-    }
-    else
-    {
-        p.isGrounded=false;
-    }
 }
 
 window.setInterval(loop, 30);

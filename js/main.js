@@ -7,14 +7,15 @@ let h2 = new Heart(350,300,"#ff3665",4);
 
 let h3 = new Heart(400,300,"#ff234a",4);
 
-new Player(50,50).draw();
+let p = new Player(50,50);
 
-/*function loop()
+function loop()
 {
     new Rect(0,0,600,400,"#fff").draw();
-    h1.beat();
+    /*h1.beat();
     h2.beat();
-    h3.beat();
+    h3.beat();*/
+    p.draw();
 }
 
-window.setInterval(loop, 30);*/
+window.setInterval(loop, 30);

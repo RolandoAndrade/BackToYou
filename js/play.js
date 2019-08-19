@@ -29,6 +29,36 @@ class PlayerHeart extends Heart
     }
 }
 
+class GameController
+{
+    constructor()
+    {
+        let a = this;
+        document.addEventListener("keydown",(e)=>a[e.keyCode]=1);
+        document.addEventListener("keyup",(e)=>a[e.keyCode]=0);
+    }
+
+    isLeft()
+    {
+        return this[37]===1;
+    }
+
+    isRight()
+    {
+        return this[39]===1;
+    }
+
+    isUp()
+    {
+        return this[38]===1;
+    }
+
+    isDown()
+    {
+        return this[40]===1;
+    }
+}
+
 
 class Player
 {
@@ -42,27 +72,46 @@ class Player
         this.heartTwo = new PlayerHeart(200,200,"rgba(255,054,101,1)");
         this.got = RADIUS;
         let a = this;
-        document.addEventListener("keydown",(e)=>{
-            switch (e.keyCode)
-            {
-                case 37:
-                    a.t-=0.1;
-                    break;
-                case 39:
-                    a.t+=0.1;
-                    break;
-                case 38:
-                    a.got=100;
-                    break;
-                case 40:
-                    a.got=10;
-                    break;
-            }
-        })
+        /*document.addEventListener("keydown",(e)=>{
+            if(e.keyCode===37)
+                a.t-=0.1;
+            else if(e.keyCode===39)
+                a.t+=0.1;
+            if(e.keyCode===38)
+                a.got=100;
+             else
+                 a.got=10;
+
+        })*/
+        this.gameController = new GameController();
     }
 
     move()
     {
+        if(this.gameController.isLeft())
+        {
+            this.t-=0.1;
+            if(this.gameController.isDown())
+            {
+                this.t-=0.5;
+            }
+        }
+        else if(this.gameController.isRight())
+        {
+            this.t+=0.1;
+            if(this.gameController.isDown())
+            {
+                this.t+=0.5;
+            }
+        }
+        if(this.gameController.isUp())
+        {
+            this.got=100;
+        }
+        else if(this.gameController.isDown())
+        {
+            this.got=10;
+        }
         let x = this.x, y = this.y, r = this.radius, t = this.t;
         this.heartOne.move(x-r*Math.cos(t), y + r*Math.sin(t));
         this.heartTwo.move(x+r*Math.cos(t), y - r*Math.sin(t));

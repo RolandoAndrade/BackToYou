@@ -13,7 +13,7 @@ let t = 0;
 
 function loop()
 {
-    new Rect(0,0,700,400,"#333").draw();
+    new Rect(0,0,700,400,"#fff").draw();
     p.draw();
 }
 

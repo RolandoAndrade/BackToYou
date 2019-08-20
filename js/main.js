@@ -8,27 +8,53 @@ let q =0;
 
 let ex = false;
 
-let h1 = new Heart(350,200,"#fff",2);
+let h1 = new Heart(350,270,"#fff",2);
 
-let text = new Text("Al principio todo era oscuridad");
+let text = new MText("Al principio todo era oscuridad");
+
+class Level
+{
+    constructor(game)
+    {
+        this.start = false;
+        this.end = false;
+        this.game = game;
+    }
+
+    play()
+    {
+        if(this.start&&!this.end)
+        {
+            this.end = this.game();
+        }
+        return this.end;
+    }
+}
 
 function loop()
 {
     new Rect(0,0,700,400,"#222").draw();
-    h1.beat();
-    /*
-    new Circle(350,200,q*10+40 + 3 * Math.sin(t), "rgba(255,255,255,0.3)").draw();
-    new Circle(350,200,q*10+35 + 3 * Math.sin(t), "rgba(255,255,255,0.4)").draw();
-    new Circle(350,200,q*10+30 + 3 * Math.sin(t), "rgba(255,255,255,0.5)").draw();
-    new Circle(350,200,q*10+25 + 3 * Math.sin(t), "rgba(255,255,255,0.6)").draw();
-    new Circle(350,200,q*10+20 + 3 * Math.sin(t), "rgba(255,255,255,0.7)").draw();
-    new Circle(350,200,q*10+15 + 3 * Math.sin(t), "rgba(255,255,255,0.8)").draw();
-    new Circle(350,200,q*10+10 + 3 * Math.sin(t), "rgba(255,255,255,0.9)").draw();
-    new Circle(350,200,q*10+5, "rgba(255,255,255,1)").draw();*/
+
     text.show();
+    new MText("BACK", WIDTH/2, 150, 80).draw();
+    new MText("TO", WIDTH/2, 230, 70).draw();
+    new MText("Y    U", WIDTH/2, 300, 50).draw();
     t=(t+0.1)%Math.PI;
+    h1.beat();
     if(ex)
-        q++;
+    {
+        if(h1.size>=0)
+        {
+            h1.resize(h1.size-0.2);
+        }
+        else
+        {
+            new Rect(0,0,700,400,"#fff").draw();
+        }
+    }
+
+
+
 
     //p.draw();
 }

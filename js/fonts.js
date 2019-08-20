@@ -1,6 +1,6 @@
 const DURATION = 80;
 
-class Text
+class MText
 {
     constructor(text, x = WIDTH/2, y = HEIGHT-30, size = 15,  color = "rgba(255,255,255,1)", align = "center")
     {

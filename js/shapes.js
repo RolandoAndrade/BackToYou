@@ -45,6 +45,13 @@ class Heart extends Shape
         this.size = this.startSize +  Math.sin(this.t);
         this.draw();
     }
+
+    resize(a)
+    {
+        this.size=a;
+        this.startSize=a;
+        this.t = 0;
+    }
 }
 
 

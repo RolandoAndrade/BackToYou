@@ -31,15 +31,12 @@ class Level
     }
 }
 
-function loop()
-{
+let intro = new Level(()=>{
     new Rect(0,0,700,400,"#222").draw();
-
     text.show();
     new MText("BACK", WIDTH/2, 150, 80).draw();
     new MText("TO", WIDTH/2, 230, 70).draw();
     new MText("Y    U", WIDTH/2, 300, 50).draw();
-    t=(t+0.1)%Math.PI;
     h1.beat();
     if(ex)
     {
@@ -50,13 +47,15 @@ function loop()
         else
         {
             new Rect(0,0,700,400,"#fff").draw();
+            return true;
         }
     }
-
-
-
-
-    //p.draw();
+    return false;
+})
+intro.start=true;
+function loop()
+{
+    intro.play();
 }
 
 document.addEventListener("keydown",()=>
